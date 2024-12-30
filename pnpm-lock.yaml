@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@nuxt/icon':
+        specifier: 1.10.3
+        version: 1.10.3(magicast@0.3.5)(rollup@4.29.1)(vite@6.0.6(@types/node@22.10.2)(jiti@2.4.2)(terser@5.37.0)(yaml@2.6.1))(vue@3.5.13(typescript@5.7.2))
       '@nuxt/ui':
         specifier: 2.20.0
         version: 2.20.0(change-case@5.4.4)(magicast@0.3.5)(rollup@4.29.1)(typescript@5.7.2)(vite@6.0.6(@types/node@22.10.2)(jiti@2.4.2)(terser@5.37.0)(yaml@2.6.1))(vue@3.5.13(typescript@5.7.2))
@@ -21,6 +24,12 @@ importers:
         specifier: latest
         version: 4.5.0(vue@3.5.13(typescript@5.7.2))
     devDependencies:
+      '@iconify-json/map':
+        specifier: ^1.2.2
+        version: 1.2.2
+      '@iconify-json/stash':
+        specifier: ^1.2.2
+        version: 1.2.2
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.49)
@@ -505,6 +514,12 @@ packages:
 
   '@iconify-json/heroicons@1.2.2':
     resolution: {integrity: sha512-qoW4pXr5kTTL6juEjgTs83OJIwpePu7q1tdtKVEdj+i0zyyVHgg/dd9grsXJQnpTpBt6/VwNjrXBvFjRsKPENg==}
+
+  '@iconify-json/map@1.2.2':
+    resolution: {integrity: sha512-UnxUR7AxBZwucqg47ueqmQ8jrQG2Us15Pu1/6BAPEBmoOT/MNt8EPN2Wc/NkjTjbRyV5Wqd8U173scR0KqbgJQ==}
+
+  '@iconify-json/stash@1.2.2':
+    resolution: {integrity: sha512-2jLAw0yWGqqaHjLu/8kIQxlEP3SYBjuDVriwkO+bpDd3LdIrkRE5TCfpY6KhsYU58n/fJF9ZhCbyXLxH54rdpg==}
 
   '@iconify/collections@1.0.500':
     resolution: {integrity: sha512-3eYCa+FTJucSWJsv7wbvGNYguMaztTX+qx0HMdY3imh5NiTVfi+ydLHpl9dIlszVdelcIZBAtjELVaMpl2wXOw==}
@@ -3956,6 +3971,14 @@ snapshots:
       vue: 3.5.13(typescript@5.7.2)
 
   '@iconify-json/heroicons@1.2.2':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/map@1.2.2':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/stash@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 
