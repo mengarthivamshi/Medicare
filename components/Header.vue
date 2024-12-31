@@ -181,8 +181,8 @@ const navOptions = [
     </div>
 
     <!-- Navigation -->
-    <nav class="text-white bg-primary">
-      <div class="container px-4 mx-auto">
+    <nav class="text-white bg-primary ">
+      <div class="container px-8 mx-auto">
         <!-- Desktop Navigation -->
         <div class="hidden lg:block">
           <ul class="flex items-center">
@@ -191,11 +191,11 @@ const navOptions = [
               :key="index"
               class="relative group"
             >
-              <div class="flex items-center px-4 py-3 cursor-pointer nav-link-container">
+              <div class="flex items-center px-1 py-1 cursor-pointer nav-link-container text">
                 {{ item.label }}
                 <Icon
                   name="stash:caret-down-light"
-                  size="28"
+                  size="20"
                   class="ml-1 nav-dropdown-ele"
                 />
               </div>
@@ -281,6 +281,9 @@ const navOptions = [
   z-index: -1;
 }
 
+.text{
+    font-size: small;
+}
 /* Navbar Styles */
 .nav-link-container {
   color: #ffffffb3;
@@ -294,6 +297,7 @@ const navOptions = [
 .dropdown-menu {
   margin-top: 0.5rem;
   z-index: 50;
+
 }
 
 /* Primary Background */
