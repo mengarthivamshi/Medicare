@@ -1,6 +1,7 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
+// State for selected language
 const selectedLanguage = ref('en')
 
 // Import country flags
@@ -46,49 +47,47 @@ onUnmounted(() => {
 });
 </script>
 
-<!-- components/NavBar.vue -->
 <template>
   <nav class="bg-white shadow-md">
     <div class="container px-4 mx-auto">
-      <div class="flex items-center justify-between h-16">
+      <div class="flex items-center justify-between h-14"> <!-- Reduced height -->
         <!-- Left side - Language selector -->
         <div class="dropdown-container">
-    <!-- Dropdown Toggle -->
-    <div
-      @click="toggleDropdown"
-      class="flex items-center gap-2 p-2 border rounded-lg cursor-pointer dropdown-selected"
-    >
-      <img :src="selectedCountry.flag" alt="Flag" class="w-6 h-6 rounded-full" />
-      <!-- <span>{{ selectedCountry.name }}</span> -->
-    </div>
+          <!-- Dropdown Toggle -->
+          <div
+            @click="toggleDropdown"
+            class="flex items-center p-2 cursor-pointer dropdown-selected"
+          >
+            <img :src="selectedCountry.flag" alt="Flag" class="w-8 h-6 rounded-full" />
+            <Icon name="stash:caret-down-light" size="28" />
+          </div>
 
-    <!-- Dropdown Options -->
-    <div v-if="isOpen" class="mt-2 bg-white border rounded-lg shadow-lg dropdown-options">
-      <ul>
-        <li
-          v-for="country in countries"
-          :key="country.code"
-          @click="selectCountry(country)"
-          class="flex items-center gap-2 p-2 cursor-pointer dropdown-option hover:bg-gray-100"
-        >
-          <img :src="country.flag" alt="Flag" class="w-6 h-6 rounded-full" />
-          <span class = "dropdown-countryCode">{{ country.code }}</span>
-        </li>
-      </ul>
-    </div>
-  </div>
+          <!-- Dropdown Options -->
+          <div v-if="isOpen" class="mt-2 bg-white border rounded-lg shadow-lg dropdown-options">
+            <ul>
+              <li
+                v-for="country in countries"
+                :key="country.code"
+                @click="selectCountry(country)"
+                class="flex items-center gap-2 p-2 cursor-pointer dropdown-option hover:bg-gray-100"
+                :class="{ 'bg-gray-200': country.code === selectedCountry.code }"
+              >
+                <img :src="country.flag" alt="Flag" class="w-8 h-6 rounded-full" />
+                <span class="dropdown-countryCode">{{ country.code }}</span>
+                 <Icon v-if="country.code === selectedCountry.code" name="stash:check" class="ml-auto text-[#003e7d] font-bold" size="24" />
+              </li>
+            </ul>
+          </div>
+        </div>
 
         <!-- Center - Search bar -->
-        <div class="flex-1 hidden mx-8 md:block">
+        <div class="flex-1 ">
           <div class="relative">
             <input 
               type="text" 
               placeholder="Search..." 
               class="w-full max-w-md px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"
             >
-            <!-- <button class="absolute right-3 top-2.5 text-gray-400">
-              🔍
-            </button> -->
           </div>
         </div>
 
@@ -106,7 +105,7 @@ onUnmounted(() => {
       </div>
 
       <!-- Mobile search bar -->
-      <div class="py-3 md:hidden">
+      <!-- <div class="py-3 md:hidden">
         <div class="relative">
           <input 
             type="text" 
@@ -117,26 +116,39 @@ onUnmounted(() => {
             🔍
           </button>
         </div>
-      </div>
+      </div> -->
     </div>
   </nav>
 </template>
 
 <style scoped>
+*{
+  --primary-color: #003e7d
+}
 .dropdown-container {
-  width: auto;
   position: relative;
 }
 
 .dropdown-selected {
   background-color: white;
-  border: 1px solid #ccc;
+}
+
+.dropdown-selected:hover {
+  background-color: #dce2f3;
+  border-radius: 0.2rem;
+  border: 1px solid #c9d2ed;
+}
+
+.dropdown-selected:active {
+  background-color: #dce2f3;
+  border-radius: 0.2rem;
+  border: 1px solid #c9d2ed;
 }
 
 .dropdown-options {
   position: absolute;
   z-index: 1000;
-  width: 120px; /* Set a larger width for options */
+  width: 140px; /* Adjust width as needed */
   left: 0; /* Align dropdown options */
 }
 
@@ -147,6 +159,12 @@ onUnmounted(() => {
 }
 
 .dropdown-countryCode {
-  font-size: 10px;
+  font-size: 12px;
+  color: var(--primary-color);
+  font-weight: 600 !important;
+}
+
+nav {
+  height: 3.5rem; /* Adjust navbar height */
 }
 </style>
